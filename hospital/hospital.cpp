@@ -11,16 +11,19 @@
 
 using namespace std;
 
-void Hospital::display(int patientType) {
+void Hospital::display() {
     cout << "===================" << endl;
     while(* hospitalName != '\0') {
         cout << *(hospitalName++);
     }
     cout << endl << "===================" << endl << endl;
-
     
+    for(int i = 0; i < totalPatients; i++) {
+        cout << patients[i]->toString() << endl;
+    }
 }
 
-void Hospital::admit(Patient p) {
+void Hospital::admit(Patient * p) {
     patients[totalPatients++] = p;
+    cout << endl << typeid(*(p)).name() << endl;
 }

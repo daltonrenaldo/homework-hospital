@@ -15,21 +15,7 @@
 using namespace std;
 
 char HOSPITAL_NAME[] = {'M', 'Y', ' ', 'H', 'O', 'S', 'P', 'I', 'T', 'A', 'L'};
-Hospital general(HOSPITAL_NAME, 500);
-
-//Patient createInPatient(int type) {
-//    char * name, ssn, insuranceName, insuranceNumber, age, spouseName, diagnosis;
-//    cout << "What is the Patient's Name?" << endl;
-//    cin >> name;
-//    
-//    if (type == 1) {
-////        MaleIn patient();
-////        return patient;
-//    } else {
-////        FemaleIn patient();
-////        return patient;
-//    }
-//}
+Hospital generalHospital(HOSPITAL_NAME, 500);
 
 void handleAddingPatient() {
     int opt;
@@ -44,26 +30,36 @@ void handleAddingPatient() {
     
     if (opt == 5) return;
     
+    Patient patient;
+    
     switch (opt) {
-        case 1:
-        case 2:
-            
+        case 1: {
+            MaleIn malepatient;
+            patient = malepatient;
             break;
+        }
+        case 2: {
+            FemaleIn femalepatient;
+            patient = femalepatient;
+            break;
+        }
         case 3:
         case 4:
-        case 5:
         default:
+            exit(0);
             break;
     }
+    
+    patient.enterPatientData();
+    generalHospital.admit(&patient);
 }
 
 void handleMenuChoice(int choice) {
     switch (choice) {
         case 1:
-            
+            handleAddingPatient();
             break;
         case 2:
-            
             break;
         case 3:
         case 4:
@@ -73,31 +69,20 @@ void handleMenuChoice(int choice) {
     }
 }
 
+void displayMenu() {
+    cout << "Pick an Option:" << endl;
+    cout << "1. Add a Patient" << endl;
+    cout << "2. Display All Patients" << endl;
+    cout << "3. Display All OutPatients" << endl;
+    cout << "4. Display All InPatients" << endl;
+    cout << "5. Exit" << endl;;
+}
+
 int main(int argc, const char * argv[]) {
-    char name[] = {'R', 'e', 'n'};
-    Patient * patients;
-    patients = new Patient[4];
-
-    MaleIn malepatient(name, name, name);
-    malepatient.toString();
-    patients[0] = malepatient;
-
-//    for(int i=0; i < 4; i++) {
-//        patients[i].toString();
-//    }
-//    int opt;
-//    general.display(Hospital::IN);
-    
-//    cout << "Pick an Option:" << endl;
-//    cout << "1. Add a Patient" << endl;
-//    cout << "2. Display All Patients" << endl;
-//    cout << "3. Display All OutPatients" << endl;
-//    cout << "4. Display All InPatients" << endl;
-//    cout << "5. Exit" << endl;;
-//
-//    cin >> opt;
-    
-//    handleMenuChoice(opt);
+    int choice;
+    displayMenu();
+    cin >> choice;
+    handleMenuChoice(choice);
     
     return 0;
 }

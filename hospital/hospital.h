@@ -13,12 +13,12 @@
 
 class Hospital {
 public:
-    enum Patient { ALL, IN, OUT, MALE, FEMALE };
+    enum PatientType { ALL, IN, OUT, MALE, FEMALE };
     
-    Hospital(char name[], int capcity) {
+    Hospital(char name[], int capacity) {
         hospitalName = name;
-        patientCapacity = capcity;
-        patients = new Patient[capcity];
+        patientCapacity = capacity;
+        patients = new Patient*[capacity];
         totalPatients = 0;
     };
     
@@ -27,11 +27,11 @@ public:
     }
     
     void readRecordsFile(char filename []);
-    void display(int patientType);
-    void admit(Patient p);
+    void display();
+    void admit(Patient * p);
     
 private:
-    Patient * patients;
+    Patient ** patients;
     int totalPatients;
     int patientCapacity;
     char * fileName;
