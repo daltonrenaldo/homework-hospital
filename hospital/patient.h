@@ -9,23 +9,27 @@
 #ifndef patient_h
 #define patient_h
 
+#include <string>
+
+using namespace std;
+
 class Patient {
 public:
     Patient() {};
-    Patient(char name[], char spouseName[], char diagnosis[]) : name(name), spouseName(spouseName), diagnosis(diagnosis) {};
+    Patient(string name, string spouseName, string diagnosis) : name(name), spouseName(spouseName), diagnosis(diagnosis) {};
     
     void parse();
-    void toString();
+    string toString();
     void enterPatientData();
     
 protected:
-    char * name;
-    char * SSN;
-    char * insuranceName;
-    char * insuranceNumber;
-    char * age;
-    char * spouseName;
-    char * diagnosis;
+    string name;
+    string SSN;
+    string insuranceName;
+    string insuranceNumber;
+    string age;
+    string spouseName;
+    string diagnosis;
 };
 
 #endif /* patient_hpp */
