@@ -14,7 +14,7 @@
 
 class FemaleIn : public Female, public Inpatient {
 public:
-    FemaleIn() {}
+    FemaleIn() : Female(), Inpatient(), Patient() {};
 };
 
 #endif /* femalein_h */

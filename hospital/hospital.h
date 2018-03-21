@@ -18,7 +18,7 @@ public:
     Hospital(char name[], int capacity) {
         hospitalName = name;
         patientCapacity = capacity;
-        patients = new Patient*[capacity];
+        patients = new Patient[capacity];
         totalPatients = 0;
     };
     
@@ -28,10 +28,10 @@ public:
     
     void readRecordsFile(char filename []);
     void display();
-    void admit(Patient * p);
+    void admit(Patient & p);
     
 private:
-    Patient ** patients;
+    Patient * patients;
     int totalPatients;
     int patientCapacity;
     char * fileName;

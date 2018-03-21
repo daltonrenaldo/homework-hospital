@@ -12,18 +12,18 @@
 using namespace std;
 
 void Hospital::display() {
+    cout << endl;
     cout << "===================" << endl;
-    while(* hospitalName != '\0') {
-        cout << *(hospitalName++);
-    }
-    cout << endl << "===================" << endl << endl;
+    cout << hospitalName          << endl;
+    cout << "===================" << endl << endl;
     
     for(int i = 0; i < totalPatients; i++) {
-        cout << patients[i]->toString() << endl;
+        cout << patients[i].toString() << endl;
     }
+    cout << endl;
 }
 
-void Hospital::admit(Patient * p) {
+void Hospital::admit(Patient & p) {
     patients[totalPatients++] = p;
-    cout << endl << typeid(*(p)).name() << endl;
+    cout << endl << typeid((p)).name() << endl;
 }

@@ -11,6 +11,8 @@
 #include "malein.h"
 #include "femalein.h"
 #include "hospital.h"
+#include "maleout.h"
+#include "femaleout.h"
 
 using namespace std;
 
@@ -24,7 +26,7 @@ void handleAddingPatient() {
     cout << "2. Female InPatient" << endl;
     cout << "3. Male OutPatient" << endl;
     cout << "4. Female OutPatient" << endl;
-    cout << "5. Exit" << endl;
+    cout << "5. <- Back to main menu" << endl;
     
     cin >> opt;
     
@@ -43,15 +45,23 @@ void handleAddingPatient() {
             patient = femalepatient;
             break;
         }
-        case 3:
-        case 4:
+        case 3: {
+            MaleOut  malepatient;
+            patient = malepatient;
+            break;
+        }
+        case 4: {
+            FemaleOut femalepatient;
+            patient = femalepatient;
+            break;
+        }
         default:
             exit(0);
             break;
     }
     
     patient.enterPatientData();
-    generalHospital.admit(&patient);
+    generalHospital.admit(patient);
 }
 
 void handleMenuChoice(int choice) {
@@ -60,6 +70,7 @@ void handleMenuChoice(int choice) {
             handleAddingPatient();
             break;
         case 2:
+            generalHospital.display();
             break;
         case 3:
         case 4:
@@ -70,19 +81,21 @@ void handleMenuChoice(int choice) {
 }
 
 void displayMenu() {
-    cout << "Pick an Option:" << endl;
+    cout << "Pick an Option:" << endl << endl;
     cout << "1. Add a Patient" << endl;
     cout << "2. Display All Patients" << endl;
     cout << "3. Display All OutPatients" << endl;
     cout << "4. Display All InPatients" << endl;
-    cout << "5. Exit" << endl;;
+    cout << "5. Exit" << endl << endl;
 }
 
 int main(int argc, const char * argv[]) {
     int choice;
-    displayMenu();
-    cin >> choice;
-    handleMenuChoice(choice);
+    do {
+        displayMenu();
+        cin >> choice;
+        handleMenuChoice(choice);
+    } while(choice != 5);
     
     return 0;
 }
