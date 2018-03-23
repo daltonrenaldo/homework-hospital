@@ -19,8 +19,10 @@ public:
     Inpatient() : Patient() {};
 
     string getType() const { return TYPE; };
+    string unitApptDate() const { return roomNumber; };
+    void setRoomNumber(string number) { roomNumber = number; };
 private:
-    char * roomNumber;
+    string roomNumber;
 };
 
 #endif /* inpatient_h */

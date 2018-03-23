@@ -14,7 +14,10 @@
 
 class Male : virtual public Patient {
 public:
-    Male() : Patient() {};
+    Male() : sex("M"), Patient() {};
+    string getSex() const;
+private:
+    string sex;
 };
 
 #endif /* male_h */

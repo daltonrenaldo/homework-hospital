@@ -7,3 +7,7 @@
 //
 
 #include "female.h"
+
+string Female::getSex() const {
+    return sex;
+}

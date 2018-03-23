@@ -10,9 +10,14 @@
 #define female_h
 
 #include "patient.h"
+#include <string>
 
 class Female : virtual public Patient {
-    
+public:
+    Female() : sex("F"), Patient() {}
+    string getSex() const;
+private:
+    string sex;
 };
 
 #endif /* female_h */

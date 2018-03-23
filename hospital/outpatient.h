@@ -18,8 +18,10 @@ public:
     
     Outpatient() : Patient() {};
     string getType() const { return TYPE; };
+    string unitApptDate() const { return appointmentDate; };
+    void setApptDate(string date) { appointmentDate = date; };
 private:
-    char * appointmentDate;
+    string appointmentDate;
 };
 
 #endif /* outpatient_hpp */

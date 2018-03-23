@@ -18,11 +18,14 @@ public:
     Patient() {};
     Patient(string name, string spouseName, string diagnosis) : name(name), spouseName(spouseName), diagnosis(diagnosis) {};
 
-    void parse();
+    void parse(string);
     void enterPatientData();
     string toString();
+    void print();
     
     virtual string getType() const = 0;
+    virtual string unitApptDate() const = 0;
+    virtual string getSex() const = 0;
     
 protected:
     string name;
@@ -32,6 +35,7 @@ protected:
     string age;
     string spouseName;
     string diagnosis;
+    void printField(string field, int max = 15);
 };
 
 #endif /* patient_hpp */

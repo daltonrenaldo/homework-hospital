@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include "hospital.h"
 
 using namespace std;
@@ -14,20 +15,20 @@ using namespace std;
 void Hospital::display() {
     header();
     for(int i = 0; i < totalPatients; i++) {
-        cout << patients[i]->toString() << endl;
+        patients[i]->print();
     }
     cout << endl;
 }
 
 void Hospital::display(string type) {
     header();
-    
+
     for(int i=0; i < totalPatients; i++) {
         Patient * p = patients[i];
         string pType = determinePatientType(p);
-        
+
         if (pType.compare(type) == 0) {
-            cout << p->toString() << endl;
+            p->print();
         }
     }
 }
@@ -38,9 +39,19 @@ void Hospital::admit(Patient * p) {
 
 void Hospital::header() {
     cout << endl;
-    cout << "===================" << endl;
-    cout << hospitalName          << endl;
-    cout << "===================" << endl << endl;
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+    cout << "Hospital: " << hospitalName << endl;
+    cout << "Patient Capacity: " << patientCapacity << endl;
+    cout << "Total Patients: " << totalPatients << '\t' << "Available Beds: " << patientCapacity - totalPatients << endl;
+    cout << endl;
+    cout << left << setw(15) << "Name"
+         << left << setw(15) << "Spouse"
+         << left << setw(15) << "Sex"
+         << left << setw(15) << "Patient Type"
+         << left << setw(15) << "Unit/Apt. Date"
+         << left << setw(15) << "Diagnosis" << endl;
+
+    cout << "--------------------------------------------------------------------------------------------" << endl;
 }
 
 string Hospital::determinePatientType(Patient * p) {

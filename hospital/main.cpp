@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "hospital.h"
 #include "patient.h"
 #include "malein.h"
@@ -61,8 +62,36 @@ void handleAddingPatient() {
     generalHospital.admit(patient);
 }
 
+void handleLoadingPatients() {
+    int count = 0;
+    ifstream infile("patient_records.in");
+    string line;
+    Patient * patient;
+    
+    while(getline(infile, line)) {
+        int mod = count % 4;
+        if (mod == 0) {
+            patient = new MaleIn();
+        } else if (mod == 1) {
+            patient = new FemaleIn();
+        } else if (mod == 2) {
+            patient = new MaleOut();
+        } else {
+            patient = new FemaleOut();
+        }
+        
+        patient->parse(line);
+        generalHospital.admit(patient);
+        count++;
+    }
+    infile.close();
+}
+
 void handleMenuChoice(int choice) {
     switch (choice) {
+        case 0:
+            handleLoadingPatients();
+            break;
         case 1:
             handleAddingPatient();
             break;
@@ -82,6 +111,7 @@ void handleMenuChoice(int choice) {
 
 void displayMenu() {
     cout << "Pick an Option:" << endl << endl;
+    cout << "0. Load Patients" << endl;
     cout << "1. Add a Patient" << endl;
     cout << "2. Display All Patients" << endl;
     cout << "3. Display All OutPatients" << endl;
