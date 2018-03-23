@@ -20,7 +20,7 @@ public:
 
     string getType() const { return TYPE; };
     string unitApptDate() const { return roomNumber; };
-    void setRoomNumber(string number) { roomNumber = number; };
+    void setSpecialField(string number) { roomNumber = number; };
 private:
     string roomNumber;
 };

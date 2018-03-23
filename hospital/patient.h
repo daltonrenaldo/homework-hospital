@@ -26,6 +26,7 @@ public:
     virtual string getType() const = 0;
     virtual string unitApptDate() const = 0;
     virtual string getSex() const = 0;
+    virtual void setSpecialField(string) = 0;
     
 protected:
     string name;

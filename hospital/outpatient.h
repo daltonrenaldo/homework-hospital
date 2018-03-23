@@ -19,7 +19,7 @@ public:
     Outpatient() : Patient() {};
     string getType() const { return TYPE; };
     string unitApptDate() const { return appointmentDate; };
-    void setApptDate(string date) { appointmentDate = date; };
+    void setSpecialField(string date) { appointmentDate = date; };
 private:
     string appointmentDate;
 };

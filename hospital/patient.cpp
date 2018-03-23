@@ -39,6 +39,7 @@ void Patient::printField(string field, int max) {
 void Patient::parse(string data) {
     string field;
     stringstream ss(data);
+    
     for (int i = 0; i < 8; i++) {
         getline(ss, field, ',');
         if (i == 0) {
@@ -56,7 +57,7 @@ void Patient::parse(string data) {
         } else if (i == 6) {
             diagnosis = field;
         } else {
-            // something else
+            setSpecialField(field);
         }
     }
 }
