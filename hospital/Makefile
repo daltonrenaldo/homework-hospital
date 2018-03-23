@@ -9,8 +9,8 @@ CXXFLAGS = -Wall -g
 # ****************************************************
 # Targets needed to bring the executable up to date
 
-main: main.o patient.o malein.o femalein.o hospital.o
-	$(CXX) $(CXXFLAGS) -o main main.o patient.o malein.o femalein.o hospital.o
+main: main.o patient.o malein.o femalein.o maleout.o femaleout.o hospital.o
+	$(CXX) $(CXXFLAGS) -o main main.o patient.o malein.o femalein.o maleout.o femaleout.o hospital.o
 
 # The main.o target can be written more simply
 
@@ -21,6 +21,10 @@ patient.o: patient.h
 malein.o: malein.h male.h inpatient.h
 
 femalein.o: femalein.h female.h inpatient.h
+
+maleout.o: maleout.h male.h outpatient.h
+
+femaleout.o: femaleout.h female.h outpatient.h
 
 hospital.o: hospital.h patient.h
 
