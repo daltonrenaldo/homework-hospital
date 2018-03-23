@@ -7,16 +7,17 @@
 //
 
 #include <iostream>
+#include "hospital.h"
 #include "patient.h"
 #include "malein.h"
 #include "femalein.h"
-#include "hospital.h"
 #include "maleout.h"
 #include "femaleout.h"
 
 using namespace std;
 
-char HOSPITAL_NAME[] = {'M', 'Y', ' ', 'H', 'O', 'S', 'P', 'I', 'T', 'A', 'L'};
+char HOSPITAL_NAME[] = {'G', 'E', 'N', 'E', 'R', 'A', 'L', ' ', 'H', 'O', 'S', 'P', 'I', 'T', 'A', 'L', '\0'};
+
 Hospital generalHospital(HOSPITAL_NAME, 500);
 
 void handleAddingPatient() {
@@ -32,27 +33,23 @@ void handleAddingPatient() {
     
     if (opt == 5) return;
     
-    Patient patient;
+    Patient * patient;
     
     switch (opt) {
         case 1: {
-            MaleIn malepatient;
-            patient = malepatient;
+            patient = new MaleIn();
             break;
         }
         case 2: {
-            FemaleIn femalepatient;
-            patient = femalepatient;
+            patient = new FemaleIn();
             break;
         }
         case 3: {
-            MaleOut  malepatient;
-            patient = malepatient;
+            patient = new MaleOut();
             break;
         }
         case 4: {
-            FemaleOut femalepatient;
-            patient = femalepatient;
+            patient = new FemaleOut();
             break;
         }
         default:
@@ -60,7 +57,7 @@ void handleAddingPatient() {
             break;
     }
     
-    patient.enterPatientData();
+    patient->enterPatientData();
     generalHospital.admit(patient);
 }
 
@@ -73,7 +70,10 @@ void handleMenuChoice(int choice) {
             generalHospital.display();
             break;
         case 3:
+            generalHospital.display(Outpatient::TYPE);
+            break;
         case 4:
+            generalHospital.display(Inpatient::TYPE);
         case 5:
         default:
             break;
@@ -96,6 +96,6 @@ int main(int argc, const char * argv[]) {
         cin >> choice;
         handleMenuChoice(choice);
     } while(choice != 5);
-    
+
     return 0;
 }

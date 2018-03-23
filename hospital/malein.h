@@ -13,7 +13,7 @@
 #include "inpatient.h"
 
 class MaleIn : public Male, public Inpatient {
-public:
+public:    
     MaleIn() : Male(), Inpatient(), Patient()  {};
     MaleIn(string name, string spouse, string diagnosis) : Male(), Inpatient(), Patient(name, spouse, diagnosis) {};
 };

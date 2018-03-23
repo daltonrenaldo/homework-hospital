@@ -7,5 +7,3 @@
 //
 
 #include "malein.h"
-
-

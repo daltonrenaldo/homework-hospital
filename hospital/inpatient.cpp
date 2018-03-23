@@ -7,3 +7,5 @@
 //
 
 #include "inpatient.h"
+
+const string Inpatient::TYPE = "inpatient";

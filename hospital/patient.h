@@ -17,10 +17,12 @@ class Patient {
 public:
     Patient() {};
     Patient(string name, string spouseName, string diagnosis) : name(name), spouseName(spouseName), diagnosis(diagnosis) {};
-    
+
     void parse();
-    string toString();
     void enterPatientData();
+    string toString();
+    
+    virtual string getType() const = 0;
     
 protected:
     string name;

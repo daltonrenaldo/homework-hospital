@@ -7,3 +7,5 @@
 //
 
 #include "outpatient.h"
+
+const string Outpatient::TYPE = "outpatient";

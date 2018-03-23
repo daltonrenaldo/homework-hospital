@@ -10,10 +10,15 @@
 #define inpatient_h
 
 #include "patient.h"
+#include <string>
 
 class Inpatient : virtual public Patient {
 public:
+    static const string TYPE;
+
     Inpatient() : Patient() {};
+
+    string getType() const { return TYPE; };
 private:
     char * roomNumber;
 };

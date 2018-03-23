@@ -12,18 +12,37 @@
 using namespace std;
 
 void Hospital::display() {
-    cout << endl;
-    cout << "===================" << endl;
-    cout << hospitalName          << endl;
-    cout << "===================" << endl << endl;
-    
+    header();
     for(int i = 0; i < totalPatients; i++) {
-        cout << patients[i].toString() << endl;
+        cout << patients[i]->toString() << endl;
     }
     cout << endl;
 }
 
-void Hospital::admit(Patient & p) {
+void Hospital::display(string type) {
+    header();
+    
+    for(int i=0; i < totalPatients; i++) {
+        Patient * p = patients[i];
+        string pType = determinePatientType(p);
+        
+        if (pType.compare(type) == 0) {
+            cout << p->toString() << endl;
+        }
+    }
+}
+
+void Hospital::admit(Patient * p) {
     patients[totalPatients++] = p;
-    cout << endl << typeid((p)).name() << endl;
+}
+
+void Hospital::header() {
+    cout << endl;
+    cout << "===================" << endl;
+    cout << hospitalName          << endl;
+    cout << "===================" << endl << endl;
+}
+
+string Hospital::determinePatientType(Patient * p) {
+    return p->getType();
 }

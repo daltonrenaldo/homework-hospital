@@ -10,10 +10,14 @@
 #define outpatient_h
 
 #include "patient.h"
+#include <string>
 
 class Outpatient : virtual public Patient {
 public:
+    static const string TYPE;
+    
     Outpatient() : Patient() {};
+    string getType() const { return TYPE; };
 private:
     char * appointmentDate;
 };
