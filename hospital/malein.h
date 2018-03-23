@@ -1,5 +1,5 @@
 //
-//  malein.hpp
+//  malein.h
 //  hospital
 //
 //  Created by Renaldo Pierre-Louis on 3/18/18.
@@ -15,7 +15,7 @@
 class MaleIn : public Male, public Inpatient {
 public:
     MaleIn() : Male(), Inpatient(), Patient()  {};
-    MaleIn(char * name, char * spouse, char * diagnosis) : Male(), Inpatient(), Patient(name, spouse, diagnosis) {};
+    MaleIn(string name, string spouse, string diagnosis) : Male(), Inpatient(), Patient(name, spouse, diagnosis) {};
 };
 
 #endif /* malein_h */

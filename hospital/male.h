@@ -10,6 +10,7 @@
 #define male_h
 
 #include "patient.h"
+#include <string>
 
 class Male : virtual public Patient {
 public:

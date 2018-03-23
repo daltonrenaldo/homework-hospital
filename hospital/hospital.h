@@ -10,6 +10,7 @@
 #define hospital_h
 
 #include "patient.h"
+#include <string>
 
 class Hospital {
 public:
@@ -36,7 +37,9 @@ private:
     int patientCapacity;
     char * fileName;
     char * hospitalName;
-    Patient determinePatientType(Patient p);
+    void header();
+    string determinePatientType(Patient * p);
+    
 };
 
 #endif /* hospital_h */
